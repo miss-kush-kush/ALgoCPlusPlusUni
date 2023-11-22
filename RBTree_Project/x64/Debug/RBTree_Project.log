@@ -1,0 +1,8 @@
+﻿  RBTree.cpp
+  RBTree_Project.cpp
+D:\Programming\C++\RBTree_Project\RBTree_Project\RBTree_Project.cpp(41,26): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Programming\C++\RBTree_Project\RBTree_Project\RBTree_Project.cpp(41,21): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+D:\Programming\C++\RBTree_Project\RBTree_Project\RBTree_Project.cpp(54,26): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Programming\C++\RBTree_Project\RBTree_Project\RBTree_Project.cpp(54,21): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+  Generating Code...
+  RBTree_Project.vcxproj -> D:\Programming\C++\RBTree_Project\x64\Debug\RBTree_Project.exe
