@@ -1,9 +1,11 @@
-﻿#include <iostream>
+#include <iostream>
 #include <sstream>
 #include <map>
 #include <vector>
 #include <numeric>
 #include <algorithm>
+
+using namespace std;
 
 // Kolor węzła: czerwony lub czarny
 enum class Color { RED, BLACK };
@@ -20,4 +22,5 @@ struct RBNode {
 
     RBNode(Key k, Color c = Color::RED)
         : key(k), color(c), parent(nullptr), left(nullptr), right(nullptr) {}
+    ~RBNode(){}
 };
