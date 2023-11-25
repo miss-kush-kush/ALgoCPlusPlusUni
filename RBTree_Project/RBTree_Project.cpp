@@ -1,33 +1,30 @@
-﻿#include <iostream>
+#include <iostream>
 #include <sstream>
 #include <map>
 #include <vector>
 #include <numeric>
 #include <algorithm>
-#include "RBTree.cpp"
-
-
-
+#include "RBTree.h"
 
 void test()
 {
-    std::vector<int> v(8);
-    std::iota(v.begin(), v.end(), 0);
-    std::map<int, int> heights, root_data;
+    vector<int> v(8);
+    iota(v.begin(), v.end(), 0);
+    map<int, int> heights, root_data;
     do
     {
         RedBlackTree<int> t;
         for (int i : v)
             t.insert(i);
-        ++heights[t.getHeight()];
+        ++heights[t.height()];
         ++root_data[t.get_root_data()];
 
-    } while (std::next_permutation(v.begin(), v.end()));
+    } while (next_permutation(v.begin(), v.end()));
     for (auto [height, cnt] : heights)
-        std::cout << height << ": " << cnt << std::endl;
-    std::cout << "***" << std::endl;
+        cout << height << ": " << cnt << endl;
+    cout << "***" << endl;
     for (auto [data, cnt] : root_data)
-        std::cout << data << ": " << cnt << std::endl;
+        cout << data << ": " << cnt << endl;
 }
 
 int main() {
@@ -36,6 +33,13 @@ int main() {
     RBNode<int>* node;
     const int MAX_ORDER = 7; // maksymalny rzad wielkosci dodawanych danych
     RedBlackTree<int>* rbt = new RedBlackTree<int>(); // stworzenie drzewa
+    int inputData[] = { 55, 69, 62, 57, 35, 83, 72 ,74 };
+
+    for (int i = 0; i < 8; i++) {
+        rbt->insert(inputData[i]);
+    }
+    rbt->Display(TraversalOrder::PREORDER);
+    rbt->clear();
     for (int o = 1; o <= MAX_ORDER; o++)
     {
         const int n = pow(10, o); // rozmiar danych
@@ -43,19 +47,19 @@ int main() {
         clock_t t1 = clock();
         for (int i = 0; i < n; i++)
         {
-            int data = rand() % n; // Generate random data (int)
-            rbt->insert(data); // dodanie ( drugi argument to wskaznik na komparator )
+            int data = rand() % abs(n); // Generowanie losowych danych (int)
+            rbt->insert(data); // Dodanie (drugi argument to wskaźnik na komparator)
         }
         clock_t t2 = clock();
-        // Output tree and timing measurements
+        // Wyświetlanie drzewa i pomiar czasu
         double timeToAdd = static_cast<double>(t2 - t1) / CLOCKS_PER_SEC;
-        std::cout << "Time to add " << n << " elements: " << timeToAdd << " seconds" << std::endl;
+        cout << "Czas dodawania " << n << " elementów: " << timeToAdd << " sekund" << endl;
 
-        const int m = pow(10, 4); // Number of search attempts
-        int hits = 0; // Number of hits
+        const int m = pow(10, 4); // Liczba prób wyszukiwania
+        int hits = 0; // Liczba trafień
         t1 = clock();
         for (int i = 0; i < m; i++) {
-            int data = rand() % n; // Generate random data for search
+            int data = rand() % n; // Generowanie losowych danych do wyszukiwania
             node = rbt->search(data);
             if (node) {
                 int result = node->key;
@@ -66,10 +70,12 @@ int main() {
 
         }
         t2 = clock();
-        // Output timing measurements and number of hits
+        // Wyświetlanie pomiarów czasu i liczby trafień
         double timeToSearch = static_cast<double>(t2 - t1) / CLOCKS_PER_SEC;
-        std::cout << "Time to search " << m << " elements: " << timeToSearch << " seconds" << std::endl;
+        cout << "Czas wyszukiwania " << m << " elementów: " << timeToSearch << " sekund" << endl;
+        cout << "Height" << rbt->height() << endl;
     }
+
     delete rbt;
     return 0;
 }
