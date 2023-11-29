@@ -1,0 +1,4 @@
+﻿  BinaryHeap.cpp
+D:\Programming\C++\BinaryHeap\BinaryHeap\BinaryHeap.cpp(114,26): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Programming\C++\BinaryHeap\BinaryHeap\BinaryHeap.cpp(114,21): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+  BinaryHeap.vcxproj -> D:\Programming\C++\BinaryHeap\x64\Debug\BinaryHeap.exe
