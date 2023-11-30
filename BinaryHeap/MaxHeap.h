@@ -8,7 +8,7 @@ class MaxHeap
 {
 private:
 	T* heapArr;
-	int capacity;
+	int maxSize;
 	int heapSize;
 
 	void swap(T* x, T* y);
@@ -18,8 +18,8 @@ public:
 	MaxHeap()
 	{
 		heapSize = 0;
-		capacity = 1;
-		heapArr = new T[capacity];
+		maxSize = 1;
+		heapArr = new T[maxSize];
 	};
 	~MaxHeap()
 	{
@@ -48,7 +48,7 @@ template<typename T>
 inline void MaxHeap<T>::heapifyUp(int i, int(*comparator)(T, T))
 {
 	int parentIndex = (i - 1) / 2;
-	if (parentIndex >= 0 && comparator(heapArr[i], heapArr[parentIndex]) < 0)
+	if (i != 0 && comparator(heapArr[i], heapArr[parentIndex]) > 0)
 	{
 		swap(&heapArr[i], &heapArr[parentIndex]);
 		heapifyUp(parentIndex, comparator);
@@ -62,10 +62,10 @@ inline void MaxHeap<T>::heapifyDown(int i, int(*comparator)(T, T))
 	int rightChild = (2 * i) + 2;
 	int largest = i;
 
-	if (leftChild < heapSize && comparator(heapArr[leftChild], heapArr[largest]) < 0)
+	if (leftChild < heapSize && comparator(heapArr[leftChild], heapArr[largest]) > 0)
 		largest = leftChild;
 
-	if (rightChild < heapSize && comparator(heapArr[rightChild], heapArr[largest]) < 0)
+	if (rightChild < heapSize && comparator(heapArr[rightChild], heapArr[largest]) > 0)
 		largest = rightChild;
 
 	if (largest != i) {
@@ -78,7 +78,7 @@ inline void MaxHeap<T>::heapifyDown(int i, int(*comparator)(T, T))
 template<typename T>
 inline void MaxHeap<T>::insert(T data, int(*comparator)(T, T))
 {
-	if (heapSize == capacity) {
+	if (heapSize == maxSize) {
 		resizeHeap();
 	}
 
@@ -116,9 +116,9 @@ template<typename T>
 inline void MaxHeap<T>::clear()
 {
 	delete[] heapArr;
-	capacity = 1;
+	maxSize = 1;
 	heapSize = 0;
-	heapArr = new T[capacity];
+	heapArr = new T[maxSize];
 }
 
 template<typename T>
@@ -132,8 +132,8 @@ inline void MaxHeap<T>::print()
 template<typename T>
 inline void MaxHeap<T>::resizeHeap()
 {
-	capacity *= 2;
-	T* newHeapArr = new T[capacity];
+	maxSize *= 2;
+	T* newHeapArr = new T[maxSize];
 	for (int i = 0; i < heapSize; ++i) {
 		newHeapArr[i] = heapArr[i];
 	}
