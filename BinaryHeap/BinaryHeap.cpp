@@ -90,24 +90,25 @@ int main() {
 
     //    // wypis na ekran aktualnej postaci kopca ( skrotowej ) oraz pomiarow czasowych
     //    double timeToAdd = static_cast<double>(t2 - t1) / CLOCKS_PER_SEC;
-    //    cout << "Czas dodawania " << n << " element體: " << timeToAdd << " sekund" << endl;
+    //    cout << "Czas dodawania " << n << " element贸w: " << timeToAdd << " sekund" << endl;
     //    
     //    // pobieranie ( i usuwanie ) elementu maksymalnego z kopca
     //    t1 = clock();
     //    for (int i = 0; i < n; i++) {
     //        Person pulled = bh->removeMax_Root(ageComparator); // argument : wskaznik na komparator
-    //        cout << pulled.age;
     //        // ewentualny wypis na ekran danych elementu pobranego ( przy malym eksperymencie )
     //    }
     //    t2 = clock();
     //    double timeToDelete = static_cast<double>(t2 - t1) / CLOCKS_PER_SEC;
-    //    cout << "Czas usuwania " << n << " element體: " << timeToDelete << " sekund" << endl;
+    //    cout << "Czas usuwania " << n << " element贸w: " << timeToDelete << " sekund" << endl;
 
     //    bh->clear(); 
     //}
     //delete bh;
 
-    const int MAX_ORDER = 7; // maksymalny rzad wielkosci dodawanych danych
+
+
+    const int MAX_ORDER = 1; // maksymalny rzad wielkosci dodawanych danych
     MaxHeap <int>* bh = new MaxHeap <int>();
     for (int o = 1; o <= MAX_ORDER; o++)
     {
@@ -123,22 +124,89 @@ int main() {
 
         // wypis na ekran aktualnej postaci kopca ( skrotowej ) oraz pomiarow czasowych
         double timeToAdd = static_cast<double>(t2 - t1) / CLOCKS_PER_SEC;
-        cout << "Czas dodawania " << n << " element體: " << timeToAdd << " sekund" << endl;
+        cout << "Czas dodawania " << n << " element贸w: " << timeToAdd << " sekund" << endl;
 
         // pobieranie ( i usuwanie ) elementu maksymalnego z kopca
         t1 = clock();
         for (int i = 0; i < n; i++) {
             int pulled = bh->removeMax_Root(comparator); // argument : wskaznik na komparator
-            //cout << pulled;
+            cout << pulled << " ";
             // ewentualny wypis na ekran danych elementu pobranego ( przy malym eksperymencie )
         }
         t2 = clock();
         double timeToDelete = static_cast<double>(t2 - t1) / CLOCKS_PER_SEC;
-        cout << "Czas usuwania " << n << " element體: " << timeToDelete << " sekund" << endl;
+        cout << "Czas usuwania " << n << " element贸w: " << timeToDelete << " sekund" << endl;
 
         bh->clear();
     }
     delete bh;
 
+
+    /*MaxHeap<int> heap;
+    int arr[] = {1,2,3,4,4,9,10, 21, 0, 1,5, 6,7,8};
+    for (size_t i = 0; i < 14; i++)
+    {
+        heap.insert(arr[i], comparator);
+    }
+
+    int choice;
+
+    do
+    {
+        int element = 0;
+
+        cout << "1) Add an element to Heap\n";
+        cout << "2) Delete Max element\n";
+        cout << "3) Print the Heap\n";
+        cout << "4) Clear the Heap\n";
+        cout << "5) Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+
+        case 1:
+
+            cout << "Adding element to Heap" << endl;
+            cout << "Write the numbeer : ";
+            cin >> element;
+            heap.insert(element, comparator);
+            cout << "\nThe element added\n\n";
+            break;
+
+        case 2:
+
+            cout << "Deleting max element..." << endl;
+            if (heap.removeMax_Root(comparator)) {
+                cout << "The Max element removed\n" << endl;;
+            }
+            break;
+
+        case 3:
+
+            heap.print();
+            break;
+
+        case 4:
+
+            cout << "The heap is cleared\n\n";
+            heap.clear();
+            break;
+
+        case 5:
+
+            cout << "\nbye bye\n\n";
+            break;
+
+        default:
+
+            cout << "TRY AGAIN !!!!!\n\n";
+            break;
+
+        }
+
+
+    } while (choice != 5);*/
     return 0;
 }
