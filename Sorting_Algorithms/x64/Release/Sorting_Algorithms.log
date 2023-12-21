@@ -1,0 +1,17 @@
+﻿  Sorting_Algorithms.cpp
+D:\Programming\C++\Sorting_Algorithms\Sorting_Algorithms\Sorting_Algorithms.cpp(155,56): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\Programming\C++\Sorting_Algorithms\Sorting_Algorithms\Sorting_Algorithms.cpp(182,52): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  D:\Programming\C++\Sorting_Algorithms\Sorting_Algorithms\Sorting_Algorithms.cpp(182,52):
+  the template instantiation context (the oldest one first) is
+  	D:\Programming\C++\Sorting_Algorithms\Sorting_Algorithms\Sorting_Algorithms.cpp(379,9):
+  	see reference to function template instantiation 'void bucket_sort<Person*>(T *,int,double,double (__cdecl *)(Person *),int (__cdecl *)(Person *,Person *))' being compiled
+          with
+          [
+              T=Person *
+          ]
+  
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 332 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Sorting_Algorithms.vcxproj -> D:\Programming\C++\Sorting_Algorithms\x64\Release\Sorting_Algorithms.exe
